@@ -48,7 +48,7 @@
       { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
       { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"] }
     ],
-    "no-console": "error",
+    "no-console": "warn"
   },
   "overrides": [
     {
@@ -72,7 +72,8 @@
         "@typescript-eslint/prefer-for-of": "error",
         "@typescript-eslint/prefer-optional-chain": "error",
         "@typescript-eslint/promise-function-async": "error",
-        "@typescript-eslint/ban-ts-comment": "warn"
+        "@typescript-eslint/ban-ts-comment": "warn",
+        "@typescript-eslint/no-unsafe-assignment": "warn"
       }
     }
   ]
