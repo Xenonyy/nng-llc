@@ -1,12 +1,10 @@
 {
-    "plugins": ["formatjs"],
+    "plugins": [],
     "extends": [
       "plugin:import/recommended",
       "plugin:jsx-a11y/recommended",
       "plugin:react-perf/recommended",
-      "next",
       "plugin:prettier/recommended",
-      "plugin:jest/recommended",
       "plugin:testing-library/react"
     ],
     "rules": {
@@ -49,7 +47,6 @@
           "devDependencies": [
             "**/__tests__/*.tsx",
             "src/test/*.tsx",
-            "next.config.js",
             "internals/**"
           ]
         }
@@ -63,9 +60,6 @@
         { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"] }
       ],
       "no-console": "error",
-      "formatjs/no-offset": "error",
-      "formatjs/enforce-id": "error",
-      "formatjs/enforce-default-message": ["error", "literal"]
     },
     "overrides": [
       {
