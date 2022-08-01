@@ -12,19 +12,19 @@ export class Seat {
   number: number;
   row: number;
   price: number;
-  vacant: boolean;
+  occupied: boolean;
   section: SectionTypes;
   constructor(
     number: number,
     row: number,
     price: number,
-    vacant: boolean,
+    occupied: boolean,
     section: SectionTypes,
   ) {
     this.number = number;
     this.row = row;
     this.price = price;
-    this.vacant = vacant;
+    this.occupied = occupied;
     this.section = section;
   }
 }

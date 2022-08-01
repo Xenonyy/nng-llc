@@ -21,7 +21,7 @@ const TheaterSectionComponent: FC<TheaterSectionTypes> = ({
 }) => {
   return (
     <div
-      className={clsx('flex justify-center items-center flex-col mt-10', {
+      className={clsx('flex justify-center items-center flex-col mt-10 w-fit', {
         ['-rotate-[75deg] mb-40']:
           section === 'boxLeft1' || section === 'boxLeft2',
         ['rotate-[75deg] mb-40']:
@@ -31,14 +31,14 @@ const TheaterSectionComponent: FC<TheaterSectionTypes> = ({
       })}
     >
       <h2 className="text-2xl capitalize">{section}</h2>
-      <div className={'flex justify-center items-center flex-wrap'}>
+      <div className={'flex justify-center items-center flex-wrap w-fit'}>
         {data.map((seats: Seat[], index: number) => {
           return (
             <>
               <span>{index}</span>
               {!reversed
                 ? seats.map((seat, index: number) => {
-                    const { row, number, vacant } = seat;
+                    const { row, number, occupied } = seat;
 
                     return (
                       <Seats
@@ -52,13 +52,13 @@ const TheaterSectionComponent: FC<TheaterSectionTypes> = ({
                           ) as SeatTypes['color']
                         }
                         number={number}
-                        occupied={vacant}
+                        occupied={occupied}
                       />
                     );
                   })
                 : seats
                     .map((seat, index: number) => {
-                      const { row, number, vacant } = seat;
+                      const { row, number, occupied } = seat;
 
                       return (
                         <Seats
@@ -72,7 +72,7 @@ const TheaterSectionComponent: FC<TheaterSectionTypes> = ({
                             ) as SeatTypes['color']
                           }
                           number={number}
-                          occupied={vacant}
+                          occupied={occupied}
                         />
                       );
                     })
