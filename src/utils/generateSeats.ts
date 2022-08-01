@@ -1,4 +1,5 @@
 import { generateSeatColorOrPrice } from './generateSeatColorOrPrice';
+import { generateSectionValue } from './generateSectionValue';
 import { generateOccupiedSeats } from './occupiedSeats';
 import type { SectionTypes } from './seatConstructor';
 import { Seat } from './seatConstructor';
@@ -24,6 +25,8 @@ export const generateSeats = (
         generateSeatColorOrPrice(row, seatNum, 'price', section) as number,
         generateOccupiedSeats(),
         section,
+        generateSectionValue(section),
+        Math.round(rowAmount + (row - 1)),
       );
     }
   }
