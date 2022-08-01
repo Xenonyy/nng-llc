@@ -1,6 +1,6 @@
 import { DefaultLayout } from './components/layouts/defaultLayout';
 import { SeatInput } from './components/seats/seatInput';
-import { Auditorium } from './components/sections/auditorium';
+import { AllSections } from './components/sections/generateSections';
 
 const App = () => {
   return (
@@ -9,7 +9,7 @@ const App = () => {
         {'Theater'}
       </h1>
       <SeatInput />
-      <Auditorium />
+      <AllSections />
     </DefaultLayout>
   );
 };
