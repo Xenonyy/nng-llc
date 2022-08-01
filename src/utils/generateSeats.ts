@@ -11,26 +11,20 @@ export const generateSeats = (
 ) => {
   for (let row = 1; row <= col; row++) {
     theater[section][row] = [];
-    if (section === 'auditorium' || section === 'balconyMid') {
-      for (let seatNum = 1; seatNum < row + rowAmount; seatNum++) {
-        theater[section][row][seatNum] = new Seat(
-          seatNum,
-          row,
-          generateSeatColorOrPrice(row, seatNum, 'price', section) as number,
-          generateOccupiedSeats(),
-          section,
-        );
-      }
-    } else {
-      for (let seatNum = 1; seatNum <= rowAmount; seatNum++) {
-        theater[section][row][seatNum] = new Seat(
-          seatNum,
-          row,
-          generateSeatColorOrPrice(row, seatNum, 'price', section) as number,
-          generateOccupiedSeats(),
-          section,
-        );
-      }
+    for (
+      let seatNum = 1;
+      section === 'auditorium' || section === 'balconyMid'
+        ? seatNum < row + rowAmount
+        : seatNum <= rowAmount;
+      seatNum++
+    ) {
+      theater[section][row][seatNum] = new Seat(
+        seatNum,
+        row,
+        generateSeatColorOrPrice(row, seatNum, 'price', section) as number,
+        generateOccupiedSeats(),
+        section,
+      );
     }
   }
 };
