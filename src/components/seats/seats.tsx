@@ -4,7 +4,12 @@ import { memo } from 'react';
 
 import type { SeatTypes } from '../../types/seatTypes';
 
-const SeatsComponent: FC<SeatTypes> = ({ color, occupied, number }) => {
+const SeatsComponent: FC<SeatTypes> = ({
+  color,
+  occupied,
+  number,
+  recommended,
+}) => {
   return (
     <div className={'flex justify-center items-center flex-row'}>
       <button
@@ -16,6 +21,7 @@ const SeatsComponent: FC<SeatTypes> = ({ color, occupied, number }) => {
             ['bg-blue-300']: color === 'blue',
             ['bg-green-300']: color === 'green',
             ['bg-gray-300 ']: occupied,
+            ['bg-gray-800 ']: recommended,
           },
         )}
         disabled={occupied}
