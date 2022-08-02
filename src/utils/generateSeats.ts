@@ -7,26 +7,27 @@ import { theater } from './theatreObject';
 
 export const generateSeats = (
   section: SectionTypes,
-  col: number,
-  rowAmount: number,
+  row: number,
+  seatAmount: number,
 ) => {
-  for (let row = 1; row <= col; row++) {
-    theater[section][row] = [];
+  for (let col = 1; col <= row; col++) {
+    theater[section][col] = [];
     for (
       let seatNum = 1;
+      // Only increase the amount of seats per row for specific theater sections
       section === 'auditorium' || section === 'balconyMid'
-        ? seatNum < row + rowAmount
-        : seatNum <= rowAmount;
+        ? seatNum < col + seatAmount
+        : seatNum <= seatAmount;
       seatNum++
     ) {
-      theater[section][row][seatNum] = new Seat(
+      theater[section][col][seatNum] = new Seat(
         seatNum,
-        row,
-        generateSeatColorOrPrice(row, seatNum, 'price', section) as number,
+        col,
+        generateSeatColorOrPrice(col, seatNum, 'price', section) as number,
         generateOccupiedSeats(),
         section,
         generateSectionValue(section),
-        Math.round(rowAmount + (row - 1)),
+        Math.round(seatAmount + (col - 1)),
       );
     }
   }
