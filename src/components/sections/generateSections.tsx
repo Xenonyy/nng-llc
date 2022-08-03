@@ -7,7 +7,7 @@ import { theater } from '../../utils/theatreObject';
 import { TheaterSection } from './section';
 
 const AllSectionsComponent: FC = () => {
-  // Generate the seats per each section, define the amounf of rows and the amount of seats in one row
+  // Generate the seats for each section, define the amounf of rows and the amount of seats in one row
   generateSeats('auditorium', 8, 14);
   generateSeats('balconyMid', 2, 18);
   generateSeats('balconyLeft', 2, 4);
