@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import type { FC } from 'react';
 import { memo } from 'react';
 
+import { useZustandStore } from '../../store/store';
 import type { SeatTypes } from '../../types/seatTypes';
 import { generateSeatColorOrPrice } from '../../utils/generateSeatColorOrPrice';
 import type { Seat, SectionTypes } from '../../utils/seatConstructor';
@@ -19,6 +20,8 @@ const TheaterSectionComponent: FC<TheaterSectionTypes> = ({
   section,
   reversed = false,
 }) => {
+  const store = useZustandStore();
+
   return (
     <div
       className={clsx('flex justify-center items-center flex-col mt-10 w-fit', {
@@ -36,6 +39,7 @@ const TheaterSectionComponent: FC<TheaterSectionTypes> = ({
           return (
             <>
               <span>{index}</span>
+              {/* Give option to reverse the mapping for some of the theater sections */}
               {!reversed
                 ? seats.map((seat, index: number) => {
                     const { row, number, occupied } = seat;
@@ -53,6 +57,7 @@ const TheaterSectionComponent: FC<TheaterSectionTypes> = ({
                         }
                         number={number}
                         occupied={occupied}
+                        recommended={store.recommendedSeats.includes(seat)}
                       />
                     );
                   })
@@ -73,6 +78,7 @@ const TheaterSectionComponent: FC<TheaterSectionTypes> = ({
                           }
                           number={number}
                           occupied={occupied}
+                          recommended={store.recommendedSeats.includes(seat)}
                         />
                       );
                     })
