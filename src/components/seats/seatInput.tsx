@@ -1,7 +1,9 @@
 import type { FC } from 'react';
-import { useRef, useCallback, memo } from 'react';
+import { useState, useEffect, useRef, useCallback, memo } from 'react';
 
 import { useZustandStore } from '../../store/store';
+import type { TheaterTypes } from '../../types/theaterTypes';
+import type { Seat, SectionTypes } from '../../utils/seatConstructor';
 import { getSeatRecommendations } from '../../utils/seatRecommendations';
 
 const SeatInputComponent: FC = () => {
@@ -23,6 +25,39 @@ const SeatInputComponent: FC = () => {
       });
     }
   }, []);
+
+  const store = useZustandStore(state => state);
+  const matchedSeats: Seat[] = [];
+
+  useEffect(() => {
+    for (const section in store.recommendedSeats) {
+      for (
+        let i = 0;
+        i < store.recommendedSeats[section as SectionTypes].length - 1;
+        i++
+      ) {
+        if (
+          i + store.seatInput <
+            store.recommendedSeats[section as SectionTypes].length &&
+          store.recommendedSeats[section as SectionTypes][i].number ===
+            store.recommendedSeats[section as SectionTypes][i + store.seatInput]
+              .number -
+              store.seatInput
+        ) {
+          for (let j = 0; j <= store.seatInput; j++) {
+            matchedSeats.push(
+              store.recommendedSeats[section as SectionTypes][i + j],
+            );
+          }
+        }
+      }
+    }
+
+    console.log(matchedSeats.slice(0, store.seatInput));
+    useZustandStore.setState({
+      bestSeats: matchedSeats.slice(0, store.seatInput),
+    });
+  }, [store.recommendedSeats]);
 
   return (
     <>
