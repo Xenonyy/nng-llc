@@ -1,7 +1,12 @@
+import { recommendedSeats } from '../components/global/recomendedSeats';
+import type { RecommendedSeatsTypes } from '../types/recomendedSeats';
+
 import type { Seat, SectionTypes } from './seatConstructor';
 import { theater } from './theatreObject';
 
-export const getSeatRecommendations = (seatsNeeded: number): Seat[] => {
+export const getSeatRecommendations = (
+  seatsNeeded: number,
+): RecommendedSeatsTypes => {
   const matchingSteats: Seat[] = [];
 
   for (const section in theater) {
@@ -18,16 +23,20 @@ export const getSeatRecommendations = (seatsNeeded: number): Seat[] => {
         );
       })
       .sort((a: Seat, b: Seat) => {
+        return a.number - b.number;
+      })
+      .sort((a: Seat, b: Seat) => {
         return a.row - b.row;
-      })
-      .sort((a: Seat, b: Seat) => {
-        return a.section_value - b.section_value;
-      })
-      .sort((a: Seat, b: Seat) => {
-        return b.price - a.price;
       });
-  }
-  const bestSeatsNeededAmount = matchingSteats.slice(0, seatsNeeded);
 
-  return bestSeatsNeededAmount;
+    // const bestSeatsNeededAmount = matchingSteats.slice(0, seatsNeeded);
+
+    recommendedSeats[section as SectionTypes] = matchingSteats.filter(
+      seat => seat.section === section,
+    );
+  }
+
+  console.log(recommendedSeats);
+
+  return recommendedSeats;
 };
