@@ -57,7 +57,7 @@ const TheaterSectionComponent: FC<TheaterSectionTypes> = ({
                         }
                         number={number}
                         occupied={occupied}
-                        recommended={store.recommendedSeats.includes(seat)}
+                        recommended={store.bestSeats.includes(seat)}
                       />
                     );
                   })
@@ -78,7 +78,7 @@ const TheaterSectionComponent: FC<TheaterSectionTypes> = ({
                           }
                           number={number}
                           occupied={occupied}
-                          recommended={store.recommendedSeats.includes(seat)}
+                          recommended={store.bestSeats.includes(seat)}
                         />
                       );
                     })
