@@ -43,7 +43,7 @@ const AllSeatInputComponent: FC = () => {
         handleInputButtonClick={handleOccupiedInputClick}
         max={217}
         min={43}
-        title={'How many seats should be occupied?'}
+        title={'How many seats should be unoccupied?'}
         type="occupiedSeats"
       />
       <SeatInput
