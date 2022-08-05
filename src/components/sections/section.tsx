@@ -24,7 +24,7 @@ const TheaterSectionComponent: FC<TheaterSectionTypes> = ({
 
   return (
     <div
-      className={clsx('flex justify-center items-center flex-col mt-10 w-fit', {
+      className={clsx('flex justify-center items-center flex-col mt-5 w-fit', {
         ['-rotate-[75deg] mb-40']:
           section === 'boxLeft1' || section === 'boxLeft2',
         ['rotate-[75deg] mb-40']:
