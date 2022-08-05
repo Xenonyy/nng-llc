@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { memo } from 'react';
 
 import { generateSeats } from '../../utils/generateSeats';
-import { theater } from '../../utils/theatreObject';
+import { theater } from '../global/theatreObject';
 
 import { TheaterSection } from './section';
 

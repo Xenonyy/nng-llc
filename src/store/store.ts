@@ -1,6 +1,6 @@
 import create from 'zustand';
 
-import type { Seat } from '../utils/seatConstructor';
+import type { Seat } from '../components/global/seatConstructor';
 
 interface StoreTypes {
   seatInput: number;

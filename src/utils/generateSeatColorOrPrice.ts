@@ -1,4 +1,4 @@
-import type { SectionTypes } from './seatConstructor';
+import type { SectionTypes } from '../components/global/seatConstructor';
 
 export const generateSeatColorOrPrice = (
   row: number,

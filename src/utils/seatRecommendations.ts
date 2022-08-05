@@ -1,8 +1,7 @@
 import { recommendedSeats } from '../components/global/recomendedSeats';
+import type { Seat, SectionTypes } from '../components/global/seatConstructor';
+import { theater } from '../components/global/theatreObject';
 import { useZustandStore } from '../store/store';
-
-import type { Seat, SectionTypes } from './seatConstructor';
-import { theater } from './theatreObject';
 
 export const getSeatRecommendations = (seatInput: number): Seat[] => {
   const unoccupiedSeats: Seat[] = [];
@@ -48,6 +47,9 @@ export const getSeatRecommendations = (seatInput: number): Seat[] => {
       }
     }
   }
+
+  // TODO:
+  // FIX BUG IF THERE ARE NO ADJACENT SEATS FROM THE INPUT, FIND PAIRS INSTEAD OF RETURNING NOTHING
   useZustandStore.setState({
     bestSeats: matchedSeats.slice(0, seatInput),
   });

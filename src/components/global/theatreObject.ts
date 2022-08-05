@@ -1,4 +1,4 @@
-import type { TheaterTypes } from '../types/theaterTypes';
+import type { TheaterTypes } from '../../types/theaterTypes';
 
 export const theater: TheaterTypes = {
   auditorium: [],

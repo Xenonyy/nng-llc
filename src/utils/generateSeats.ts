@@ -1,9 +1,10 @@
+import type { SectionTypes } from '../components/global/seatConstructor';
+import { Seat } from '../components/global/seatConstructor';
+import { theater } from '../components/global/theatreObject';
+
 import { generateSeatColorOrPrice } from './generateSeatColorOrPrice';
 import { generateSectionValue } from './generateSectionValue';
 import { generateOccupiedSeats } from './occupiedSeats';
-import type { SectionTypes } from './seatConstructor';
-import { Seat } from './seatConstructor';
-import { theater } from './theatreObject';
 
 export const generateSeats = (
   section: SectionTypes,

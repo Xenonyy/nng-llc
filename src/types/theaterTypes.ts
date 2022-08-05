@@ -1,4 +1,4 @@
-import type { Seat } from '../utils/seatConstructor';
+import type { Seat } from '../components/global/seatConstructor';
 
 export interface TheaterTypes {
   auditorium: [Seat[]] | [];
