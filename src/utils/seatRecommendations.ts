@@ -6,6 +6,7 @@ import { useZustandStore } from '../store/store';
 export const getSeatRecommendations = (seatInput: number): Seat[] => {
   const unoccupiedSeats: Seat[] = [];
   const matchedSeats: Seat[] = [];
+  const adjacentSeats: Seat[] = [];
 
   // Select the and return the unoccupied seats from the theater and sort it based on number, row and section
   for (const section in theater) {
@@ -46,12 +47,48 @@ export const getSeatRecommendations = (seatInput: number): Seat[] => {
         }
       }
     }
+    // If there are less than desired adjacent seats, search for only one adjacent seat
+    if (matchedSeats.length < seatInput) {
+      for (
+        let i = 0;
+        i <= recommendedSeats[section as SectionTypes].length;
+        i++
+      ) {
+        if (
+          i + 1 < recommendedSeats[section as SectionTypes].length &&
+          recommendedSeats[section as SectionTypes][i].row ===
+            recommendedSeats[section as SectionTypes][i + 1].row &&
+          recommendedSeats[section as SectionTypes][i].number ===
+            recommendedSeats[section as SectionTypes][i + 1].number - 1
+        ) {
+          adjacentSeats.push(recommendedSeats[section as SectionTypes][i]);
+          adjacentSeats.push(recommendedSeats[section as SectionTypes][i + 1]);
+        }
+      }
+    }
   }
+  const sortedAdjacent = adjacentSeats
+    .sort((a: Seat, b: Seat) => {
+      return (
+        Math.abs(a.number - a.all_seats_in_row / 2) -
+        Math.abs(b.number - b.all_seats_in_row / 2)
+      );
+    })
+    .sort((a: Seat, b: Seat) => {
+      return a.row - b.row;
+    })
+    .sort((a: Seat, b: Seat) => {
+      return b.price - a.price;
+    })
+    .sort((a: Seat, b: Seat) => {
+      return a.section_value - b.section_value;
+    });
 
-  // TODO:
-  // FIX BUG IF THERE ARE NO ADJACENT SEATS FROM THE INPUT, FIND PAIRS INSTEAD OF RETURNING NOTHING
   useZustandStore.setState({
-    bestSeats: matchedSeats.slice(0, seatInput),
+    bestSeats:
+      matchedSeats.length < seatInput
+        ? sortedAdjacent.slice(0, seatInput)
+        : matchedSeats.slice(0, seatInput),
   });
 
   return matchedSeats;
