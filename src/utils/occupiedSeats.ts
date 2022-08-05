@@ -1,3 +1,5 @@
+import { useZustandStore } from '../store/store';
+
 export const generateOccupiedSeats = () => {
-  return Math.random() > 80 / 100;
+  return Math.random() > useZustandStore.getState().occupiedSeats / 217;
 };
