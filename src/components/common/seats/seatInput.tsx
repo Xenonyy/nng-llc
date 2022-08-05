@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 import { useEffect, useRef, useCallback, memo } from 'react';
 
-import { useZustandStore } from '../../store/store';
-import { generateSeats } from '../../utils/generateSeats';
-import { getSeatRecommendations } from '../../utils/seatRecommendations';
+import { useZustandStore } from '../../../store/store';
+import { generateSeats } from '../../../utils/generateSeats';
+import { getSeatRecommendations } from '../../../utils/seatRecommendations';
 
 const SeatInputComponent: FC = () => {
   const occupiedInputRef = useRef<HTMLInputElement>(null);
@@ -23,11 +23,18 @@ const SeatInputComponent: FC = () => {
       generateSeats('boxRight1', 2, 3);
       generateSeats('boxRight2', 2, 3);
 
+      // TODO:
+      // FIX NOT GENERATING THE SEATS THE VERY FIRST TIME
+
       useZustandStore.setState({
         occupiedSeats: Number(occupiedInputRef.current?.value),
       });
     }
   }, []);
+
+  // TODO:
+  // FIX NOT GENERATING THE RECOMMENDED SEATS WITH THE EXISTING VALUE AFTER GENERATING A NEW LAYOUT, ONLY IF YOU CHANGE THE VALUE
+
   const handleSeatInputClick = useCallback(() => {
     // Don't let lower than 2 or higher than 8 seats pass to the state
     if (Number(seatInputRef.current?.value) > 8) {
@@ -44,6 +51,12 @@ const SeatInputComponent: FC = () => {
       });
     }
   }, []);
+
+  const store = useZustandStore(state => state);
+
+  useEffect(() => {
+    console.log(store);
+  }, [store]);
 
   return (
     <>

@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import type { FC } from 'react';
 import { memo } from 'react';
 
-import type { SeatTypes } from '../../types/seatTypes';
+import type { SeatTypes } from '../../../types/seatTypes';
 
 const SeatsComponent: FC<SeatTypes> = ({
   color,
