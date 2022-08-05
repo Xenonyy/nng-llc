@@ -11,7 +11,7 @@
 # Getting Started
 ## Installation
 
-Clone this repository with ```git clone``` https://github.com/Xenonyy/nng-llc\
+Clone this repository with ```git clone``` https://github.com/Xenonyy/nng-llc \
 Then run ``` npm install && npm run start```
 
 # Available Scripts
