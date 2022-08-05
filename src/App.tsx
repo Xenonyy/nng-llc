@@ -1,6 +1,6 @@
+import { SeatInput } from './components/common/seats/seatInput';
+import { AllSections } from './components/common/sections/generateSections';
 import { DefaultLayout } from './components/layouts/defaultLayout';
-import { SeatInput } from './components/seats/seatInput';
-import { AllSections } from './components/sections/generateSections';
 
 const App = () => {
   return (

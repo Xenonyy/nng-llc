@@ -3,10 +3,10 @@ import clsx from 'clsx';
 import type { FC } from 'react';
 import { memo } from 'react';
 
-import { useZustandStore } from '../../store/store';
-import type { SeatTypes } from '../../types/seatTypes';
-import { generateSeatColorOrPrice } from '../../utils/generateSeatColorOrPrice';
-import type { Seat, SectionTypes } from '../global/seatConstructor';
+import { useZustandStore } from '../../../store/store';
+import type { SeatTypes } from '../../../types/seatTypes';
+import { generateSeatColorOrPrice } from '../../../utils/generateSeatColorOrPrice';
+import type { Seat, SectionTypes } from '../../global/seatConstructor';
 import { Seats } from '../seats/seats';
 
 interface TheaterSectionTypes {

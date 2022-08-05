@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import { memo } from 'react';
 
-import { generateSeats } from '../../utils/generateSeats';
-import { theater } from '../global/theatreObject';
+import { generateSeats } from '../../../utils/generateSeats';
+import { theater } from '../../global/theatreObject';
 
 import { TheaterSection } from './section';
 
