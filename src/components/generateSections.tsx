@@ -1,10 +1,10 @@
 import type { FC } from 'react';
 import { memo } from 'react';
 
-import { generateSeats } from '../../../utils/generateSeats';
-import { theater } from '../../global/theatreObject';
+import { generateSeats } from '../utils/generateSeats';
 
-import { TheaterSection } from './section';
+import { TheaterSection } from './common/sections/section';
+import { theater } from './global/theatreObject';
 
 const AllSectionsComponent: FC = () => {
   // Generate the seats for each section, define the amounf of rows and the amount of seats in one row
