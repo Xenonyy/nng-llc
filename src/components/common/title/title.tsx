@@ -6,7 +6,7 @@ interface PageTitleTypes {
 }
 const PageTitleComponent: FC<PageTitleTypes> = ({ title }) => {
   return (
-    <h1 className="text-7xl border-2 border-black border-solid py-10 capitalize px-80">
+    <h1 className="text-3xl border-2 border-black border-solid py-5 capitalize px-40">
       {title}
     </h1>
   );
