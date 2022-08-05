@@ -24,20 +24,23 @@ const TheaterSectionComponent: FC<TheaterSectionTypes> = ({
 
   return (
     <div
-      className={clsx('flex justify-center items-center flex-col mt-5 w-fit', {
-        ['-rotate-[75deg] mb-40']:
-          section === 'boxLeft1' || section === 'boxLeft2',
-        ['rotate-[75deg] mb-40']:
-          section === 'boxRight1' || section === 'boxRight2',
-        ['rotate-[25deg]']: section === 'balconyLeft',
-        ['-rotate-[25deg]']: section === 'balconyRight',
-      })}
+      className={clsx(
+        'flex justify-center items-center flex-col mt-5 w-auto scale-75',
+        {
+          ['-rotate-[75deg] mb-10']:
+            section === 'boxLeft1' || section === 'boxLeft2',
+          ['rotate-[75deg] mb-10']:
+            section === 'boxRight1' || section === 'boxRight2',
+          ['rotate-[25deg]']: section === 'balconyLeft',
+          ['-rotate-[25deg]']: section === 'balconyRight',
+        },
+      )}
     >
       <h2 className="text-2xl capitalize">{section}</h2>
-      <div className={'flex justify-center items-center flex-wrap w-fit'}>
+      <div className={'flex justify-center items-center flex-wrap w-auto'}>
         {data.map((seats: Seat[], index: number) => {
           return (
-            <>
+            <div key={index} className="flex flex-row">
               <span>{index}</span>
               {/* Give option to reverse the mapping for some of the theater sections */}
               {!reversed
@@ -84,7 +87,7 @@ const TheaterSectionComponent: FC<TheaterSectionTypes> = ({
                     })
                     .reverse()}
               <div key={index} className="w-full" />
-            </>
+            </div>
           );
         })}
       </div>
