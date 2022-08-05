@@ -31,18 +31,18 @@ const AllSectionsComponent: FC = () => {
   return (
     <div className="flex justify-center items-center flex-row">
       <div className="flex-row">
-        <div className="flex-col w-80">
+        <div className="flex-col w-1">
           <TheaterSection reversed data={boxLeft1} section={'boxLeft1'} />
           <TheaterSection reversed data={boxLeft2} section={'boxLeft2'} />
           <TheaterSection reversed data={balconyLeft} section={'balconyLeft'} />
         </div>
       </div>
-      <div>
+      <div className="max-w-[80vw]">
         <TheaterSection data={auditorium} section={'auditorium'} />
         <TheaterSection data={balconyMid} section={'balconyMid'} />
       </div>
       <div>
-        <div className="flex-col w-80">
+        <div className="flex-col w-1">
           <TheaterSection data={boxRight1} section={'boxRight1'} />
           <TheaterSection data={boxRight2} section={'boxRight2'} />
           <TheaterSection data={balconyRight} section={'balconyRight'} />
